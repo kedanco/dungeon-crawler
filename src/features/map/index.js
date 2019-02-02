@@ -8,6 +8,10 @@ function getTileSprite(type) {
 	switch (type) {
 		case 0:
 			return "grass";
+		case 3:
+			return "tree";
+		case 4:
+			return "chest";
 		case 5:
 			return "rock";
 		case 6:
@@ -29,7 +33,7 @@ function MapTile(props) {
 
 function MapRow(props) {
 	return (
-		<div className="row">
+		<div className="row" style={{ height: SPRITE_SIZE }}>
 			{props.tiles.map(tile => (
 				<MapTile tile={tile} />
 			))}
@@ -41,11 +45,14 @@ function Map(props) {
 	return (
 		<div
 			style={{
+				position: "relative",
+				top: "0px",
+				left: "0px",
 				width: "800px",
-				height: "400px",
+				height: "480px",
 				backgroundColor: "green",
-
-				margin: "10px auto"
+				border: "4px solid white",
+				margin: "0px auto"
 			}}
 		>
 			{props.tiles.map(row => (
